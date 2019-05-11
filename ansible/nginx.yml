@@ -3,4 +3,6 @@
 # - become: false 
 
   roles: 
-       - nginx-install
+       - { role: nginx-install,
+           nginx_install_latest: true
+         }
