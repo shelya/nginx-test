@@ -42,3 +42,6 @@
 
 ## db-[99:101]-node.example.com
 
+[nginx-hosts]
+5.34.180.147
+5.34.180.152

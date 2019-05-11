@@ -1,2 +1,24 @@
 ---
 # tasks file for roles/nginx-install
+
+- name: import GPG key 
+  rpm_key: 
+    state: present
+    key: https://nginx.org/keys/nginx_signing.key
+    validate_certs: no
+
+- name: Add nginx repo to centos
+  yum_repository: 
+    name: nginx-stable
+    description: nginx stable repo
+    file: nginx.repo
+    baseurl: http://nginx.org/packages/centos/$releasever/$basearch/
+    gpgcheck: yes
+    enabled: yes
+    gpgkey: https://nginx.org/keys/nginx_signing.key
+
+- name: Install nginx 
+  yum: 
+    name: nginx
+    state: latest
+  when: ansible_os_family == "RedHat"
