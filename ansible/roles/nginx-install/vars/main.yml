@@ -2,3 +2,4 @@
 # vars file for roles/nginx-install
 
 nginx_install_latest: false
+env_var: dev

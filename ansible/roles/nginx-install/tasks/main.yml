@@ -21,3 +21,11 @@
     when: ansible_os_family == "RedHat"
     notify: restart nginx
 
+  - name: Copy nginx config
+    template: 
+      src: templates/{{ env_var }}/nginx.conf.j2
+      dest: /etc/nginx/nginx.conf
+      owner: nginx
+      group: nginx
+      mode: 0644
+    notify: reload nginx
